@@ -14,6 +14,7 @@
 </head>
 <body>
 <table  align="center" border="1" cellspacing="0">
+    <tr><th><a href="add.jsp">新增</a></th></tr>
     <tr>
         <th>用户ID</th>
         <th>用户姓名</th>
@@ -30,7 +31,7 @@
             <th>${user.u_pass}</th>
             <th>${user.u_sex}</th>
             <th>${user.u_vip}</th>
-            <th>删除  <a href="selectOneById?id=${user.u_id}">修改</a></th>
+            <th><a href="del?id=${user.u_id}">删除</a>  <a href="selectOneById?id=${user.u_id}">修改</a></th>
         </tr>
     </c:forEach>
 </table>

@@ -10,6 +10,13 @@ public class User {
     public User() {
     }
 
+    public User(String u_name, String u_pass, String u_sex, Integer u_vip) {
+        this.u_name = u_name;
+        this.u_pass = u_pass;
+        this.u_sex = u_sex;
+        this.u_vip = u_vip;
+    }
+
     public User(Integer u_id, String u_name, String u_pass, String u_sex, Integer u_vip) {
         this.u_id = u_id;
         this.u_name = u_name;
