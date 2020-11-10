@@ -1,8 +1,10 @@
 package com.qf.controller;
 
+import com.qf.dao.UserDao;
 import com.qf.pojo.User;
 import com.qf.service.UserUpdateService;
 import com.qf.service.impl.UserUpdateServiceImpl;
+import com.qf.util.MyBatisUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +15,7 @@ import java.io.IOException;
 
 @WebServlet("/update")
 public class UserUpdateController extends HttpServlet {
-    UserUpdateService userUpdateService = new UserUpdateServiceImpl();
+//    UserUpdateService userUpdateService = new UserUpdateServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,7 +32,10 @@ public class UserUpdateController extends HttpServlet {
         String vip = req.getParameter("vip");
 
         User user = new User(Integer.valueOf(id),name,pass,sex,Integer.valueOf(vip));
-        int update = userUpdateService.update(user);
+//        int update = userUpdateService.update(user);
+
+        UserDao userDao = MyBatisUtils.getMapper(UserDao.class);
+        int update = userDao.update(user);
 
         resp.sendRedirect("user");
     }

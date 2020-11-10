@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.UserDao">
+
+    <select id="selectOneByName" resultType="user">
+        select * from user where u_name = #{name}
+    </select>
+
+    <update id="update" parameterType="user">
+        update user set u_name=#{u_name},u_pass=#{u_pass},u_sex=#{u_sex},u_vip=#{u_vip} where u_id=#{u_id}
+    </update>
+
+    <insert id="add" parameterType="user">
+        insert into user values(null,#{u_name},#{u_pass},#{u_sex},#{u_vip})
+    </insert>
+
+    <select id="selectOne" resultType="user">
+        select * from user where u_id = #{id}
+    </select>
+
+    <delete id="del">
+        delete from user where u_id= #{id}
+    </delete>
+
+    <select id="selectAll" resultType="user">
+        select * from user where 1=1
+    </select>
+</mapper>

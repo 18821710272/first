@@ -1,8 +1,10 @@
 package com.qf.controller;
 
+import com.qf.dao.UserDao;
 import com.qf.pojo.User;
 import com.qf.service.UserAddService;
 import com.qf.service.impl.UserAddServiceImpl;
+import com.qf.util.MyBatisUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +15,7 @@ import java.io.IOException;
 
 @WebServlet("/add")
 public class UserAddController extends HttpServlet {
-    UserAddService userAddService = new UserAddServiceImpl();
+//    UserAddService userAddService = new UserAddServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,8 +30,11 @@ public class UserAddController extends HttpServlet {
         String sex = req.getParameter("sex");
         String vip = req.getParameter("vip");
 
-        User user = new User(name,pass,sex,Integer.valueOf(vip));
-        int add = userAddService.add(user);
+        User user = new User(null,name,pass,sex,Integer.valueOf(vip));
+//        int add = userAddService.add(user);
+
+        UserDao userDao = MyBatisUtils.getMapper(UserDao.class);
+        int add = userDao.add(user);
 
         resp.sendRedirect("user");
     }
